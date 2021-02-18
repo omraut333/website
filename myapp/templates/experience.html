@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Experience
+{% endblock title %}
+
+{% block experienceactive%} active {%endblock experienceactive%}
+
+{% block experiencebody%}
+{%for experience in experiences%}
+<div class="container mt-5 mb-5 pt-5 pb-5" id="card">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>{{experience.name}}</h1><hr>
+            <ul>
+                <li> <b>Organisation Name:</b> {{experience.organisation}}</li>
+                <li><b>Type:</b> {{experience.type}}</li>
+                <li><b>Start Date:</b> {{experience.start_date}}</li>
+                <li><b>End Date:</b> {{experience.end_date}}</li>
+            </ul>
+            <p>
+                {{experience.desc|safe}}
+            </p>
+        </div>
+    </div>
+</div>
+{%endfor %}
+
+{%endblock experiencebody%}

@@ -1,0 +1,51 @@
+
+{% extends "base.html" %}
+
+{% block title %}
+    Blog
+{% endblock title %}
+
+{% block blogactive%} active {%endblock blogactive%}
+
+{%block bolgbody%}
+
+
+
+{{error}}
+    <div class="container">
+        {%if query%}
+        <center>
+            <h1 class="mt-5">
+                {%with results.count as total_results %}
+                 <span style="color:red;">{{results.count}}</span> results found
+                {%endwith %}
+            </h1>
+        </center>
+        <hr>
+        {%for i in results %}
+            <div class="row mt-5 mb-5 text-center " id="blog_list">
+                <div class="col-md-4 d-flex align-items-center justify-content-center">
+                    <h4>{{i.title}}</h4>
+                </div>
+                <div class="col-md-4">
+                    <p class="d-flex align-items-center justify-content-center"> Created on: {{i.created_on}} <br> Updated on: {{i.updated_on}}</p>
+                </div>
+                <div class="col-md-4">
+                    <form action="{% url 'blog_body'%}" method='POST'>
+                        {% csrf_token %}
+                        <input type="hidden" name="post_id" value="{{i.id}}">
+                        <button type="submit" class="btn btn-success">Go to blog</button>
+                    </form>
+                </div>
+            </div>
+        {%endfor %}
+        {%else %}
+            
+        {% endif %}
+
+        
+    </div>
+
+
+ 
+{%endblock bolgbody%}

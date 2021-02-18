@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}
+    About Me
+{% endblock title %}
+
+{% block aboutactive%} active {%endblock aboutactive%}
+
+{%block aboutbody%}
+{%for about in about_me%}
+<div class="container mt-5 mb-5 pt-5 pb-5">
+    <div class="row">
+        <div class="col-lg-6 col-md-12">
+            <p>{{about.desc|safe}}</p>
+        </div>
+        <div class="col-lg-6 col-md-12">
+            <img src="/media/{{about.image}}" alt="School" class=" img-responsive rounded-circle mx-auto d-block" alt="" height="500" width="500">
+        </div>
+    </div>
+</div>
+{%endfor %}
+{% endblock aboutbody%}

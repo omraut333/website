@@ -1,0 +1,28 @@
+
+{% extends "base.html" %}
+
+{% block title %}
+    Contact Me
+{% endblock title %}
+
+{% block contactactive%} active {%endblock contactactive%}
+
+
+
+
+{% block contactbody%}
+<div id="contact">
+    <form action="{% url 'contact' %}" method="POST">
+        {% csrf_token %}
+        <p>Contact Me</p>
+        <input type="text" placeholder="First Name" name="fname" required>
+        <input type="text" name="lname" placeholder = "Last Name" required>
+        <input type="email" name="email" placeholder = "Email Address" required>
+        <input type="text" name="mobile" placeholder = "mobile Number" maxlength="12" required>
+        <textarea name="msg" id="" rows="10" placeholder="Enter your message..." required></textarea>
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div>
+{% endblock contactbody%}
+
+

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Projects
+{% endblock title %}
+
+{% block projectsactive%} active {%endblock projectsactive%}
+
+{% block projectbody%}
+{%for project in projects%}
+<div class="container">
+    <div class="card mb-3 mt-5 p-5" id="pro">
+        <div class="row g-0">
+          <div class="col-md-6">
+            <img src="/media/{{project.pic}}" alt="..." width="100%" height="500px">
+          </div>
+          <div class="col-md-6">
+            <div class="card-body" style="padding-left: 40px;">
+              <h2 class="card-title text-center">{{project.pro_name}}</h2><hr>
+              <div class="row text-center">
+                <p class="col-md-6"><b>Start Date:</b> {{project.start_date}}</p>
+                <p class="col-md-6"><b>End Date:</b> {{project.end_date}}</p>
+              </div>
+              <p class="card-text">{{project.desc}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+{%endfor %}
+
+
+{%endblock projectbody%}

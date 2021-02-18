@@ -1,0 +1,39 @@
+
+{% extends "base.html" %}
+
+{% block title %}
+    Blog
+{% endblock title %}
+
+{% block blogactive%} active {%endblock blogactive%}
+
+{%block bolgbody%}
+{% for i in posts %}
+    {%if i.id == post_id%}
+    
+
+    <div class="container">
+        <div id="heading" class="text-center mt-5 pt-5 pb-5">
+            <h1>{{i.title}}</h1>
+        </div>
+        <div class="row text-center pt-3">
+            <div class="col-md-6">
+                <p><b>Created on:</b> {{i.created_on}}</p>
+            </div>
+            <div class="col-md-6">
+                <p><b>Updated on:</b> {{i.updated_on}}</p>
+            </div>
+        </div><hr>
+        <div class="pt-3">
+            {{i.content|safe}}
+        </div>
+    </div>
+    
+
+
+    {%endif %}
+{%endfor %}
+
+
+ 
+{%endblock bolgbody%}

@@ -1,0 +1,41 @@
+
+{% extends "base.html" %}
+
+{% block title %}
+    Blog
+{% endblock title %}
+
+{% block blogactive%} active {%endblock blogactive%}
+
+{%block bolgbody%}
+<div class="container">
+    <div class="row">
+        {%for i in ob%}
+        <div class="col-md-4 col-sm-12 mt-5">
+            <div class="card p-2" style="width: 20rem; margin: 0px 10px;">
+                <img class="card-img-top" src="/media/{{i.image}}" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title text-center">{{i.title}}</h5>
+                  
+                      <form action="{%url 'blog_detail'%}" method="POST">
+                        {% csrf_token %}
+                        <p class="card-text">{{i.description|slice:":200"}} ........  
+                          <input type="hidden" name="blog_detail_id" value="{{i.id}}">
+                          <button type="submit" class="btn text-danger p-0 m-0">read more</button>
+                      </form>
+                    </p>
+                  <p class="card-text"><b>Created on: </b>{{i.created_on}}</p>
+                  <form action="{%url 'blog_list'%}" method="POST">
+                    {% csrf_token %}
+                      <input type="hidden" name="blog_id" value="{{i.id}}">
+                      <button type="submit" class="btn btn-primary d-flex align-items-center justify-content-center">Go to Blog</button>
+                  </form>
+                  
+                </div>
+            </div>
+        </div>
+        
+        {%endfor %}
+    </div>
+</div>
+{%endblock bolgbody%}

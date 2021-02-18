@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Extra Curricular
+{% endblock title %}
+
+{% block extraactive%} active {%endblock extraactive%}
+
+{% block extrabody%} 
+<div class="container mt-5 mb-5" style="font-family:cursive;">
+    <ul>
+        {%for extra in extras%}
+        <li>{{extra.list}}</li>
+        {%endfor%}
+    </ul>
+</div>
+{%endblock extrabody%}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Education
+{% endblock title %}
+
+{% block educationactive%} active {%endblock educationactive%}
+
+{% block educationbody%}
+<h1 id="edu">MY EDUCATION</h1><hr>
+{%for education in educations%}
+<div class="container mt-5 mb-5 pt-5 pb-5" id="card">
+    <div class="row">
+        <div class="col-lg-6 col-md-12">
+            <h1>{{education.edu_name}}</h1><hr>
+            <ul>
+                <li> <b>School/college Name:</b> {{education.clg_name}}</li>
+                <li><b>University/Board Name:</b> {{education.uni_name}}</li>
+                <li><b>Year of passing:</b> {{education.passing}}</li>
+                <li><b>Obtained marks:</b> {{education.marks}}</li>
+            </ul>
+            <p>
+                {{education.desc|safe}}
+            </p>
+        </div>
+        <div class="col-lg-6 col-md-12">
+            <img src="/media/{{education.image}}" alt="School" width="100%" height="500px">
+        </div>
+    </div>
+</div>
+{%endfor %}
+
+{%endblock educationbody%}
